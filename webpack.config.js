@@ -1,4 +1,6 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
+var webpack = require('webpack');
 
 module.exports = {
   mode: "development",
@@ -7,6 +9,11 @@ module.exports = {
     path: path.join(__dirname, './client/public'),
     filename: "bundle.js"
   },
+  plugins: [
+    new Dotenv({
+      systemvars: true,
+    }),
+  ],
   module: {
     rules: [
       {
@@ -22,8 +29,9 @@ module.exports = {
         test: /\.(png|jpg)$/,
         use: {
           loader: 'url-loader'
-        }
-      }
+        },
+      },
+
     ]
   },
   // [devtool] this is an additional source map that will let the browser know what files are running our code.

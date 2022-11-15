@@ -9,7 +9,8 @@ const headerStyles = {
   justifyContent: 'space-evenly',
   alignItems: 'center',
   width: '100%',
-  padding: '2em 0px 2em 0px'
+  padding: '2em 0px 2em 0px',
+  backgroundColor: 'rgb(255, 255, 255)'
 };
 
 const headerImageStyles = {

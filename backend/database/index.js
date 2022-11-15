@@ -8,10 +8,10 @@ const dbName = 'sessions-app';
 async function main() {
   await client.connect();
   console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('documents');
+  const db = await client.db(dbName);
+  const clubs = await db.collection('clubs').find({}).toArray();
 
-  return 'done.';
+  // return 'done.';
 }
 
 main()

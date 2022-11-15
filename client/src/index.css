@@ -1,0 +1,60 @@
+@import url('https://fonts.google.com/specimen/Source+Sans+Pro');
+
+* {
+  font-family: sans-serif;
+  padding: none;
+  margin: 0;
+  text-decoration: none;
+}
+
+.prime {
+  /* Primary */
+  color: rgb(230, 177, 126);
+}
+
+.second {
+  /* Secondary */
+  color: rgb(230, 177, 126);
+  /* color: rgb(250, 229, 210); */
+}
+
+.accent {
+  /* Accent */
+  color: rgb(230, 177, 126);
+}
+
+.bg {
+  /* Background */
+  color: rgb(230, 177, 126);
+  background-color: rgb(255, 255, 255);
+}
+
+.fade {
+  border: 1px solid black;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hero {
+  height: 500px;
+  width: 500px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: 1px solid rgba(0, 0, 0, 0.094);
+  background-color: white;
+  font-size: 1.6em;
+  margin-right: 50px;
+  margin-top: 50px;
+  padding: 16px;
+}
+
+.btn-nav {
+  background-color: transparent;
+  border: none;
+  font-size: 1.4em;
+}
