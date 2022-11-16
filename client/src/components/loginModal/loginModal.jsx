@@ -24,9 +24,16 @@ const LoginModal = () => {
   };
 
 
+  const ModalBtnStyles = {
+    background: 'transparent',
+    border: 'none',
+    fontSize: '1.4em',
+    color: 'rgb(230, 177, 126)'
+  }
+
   return (
     <div>
-      <button onClick={() => setShow(true)}>Login</button>
+      <button style={ModalBtnStyles} onClick={() => setShow(true)}>Login</button>
       <Modal show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container" onClick={(e) => handleOffModalClick(e)}>
           <h1 data-testid="modal-heading">Sign up</h1>

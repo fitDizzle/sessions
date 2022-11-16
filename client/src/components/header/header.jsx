@@ -10,7 +10,8 @@ const headerStyles = {
   alignItems: 'center',
   width: '100%',
   padding: '2em 0px 2em 0px',
-  backgroundColor: 'rgb(255, 255, 255)'
+  backgroundColor: 'rgb(255, 255, 255)',
+  flexWrap: 'wrap'
 };
 
 const headerImageStyles = {
@@ -19,11 +20,11 @@ const headerImageStyles = {
   float: 'left'
 };
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div style={headerStyles}>
       <img style={headerImageStyles} src={ColorLogo} alt="sessions-logo" />
-      <NavBar />
+      <NavBar viewSelect={props.viewSelect} />
     </div>
   )
 };

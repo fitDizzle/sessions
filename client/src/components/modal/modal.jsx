@@ -20,7 +20,7 @@ const Modal = (props) => {
   }
 
   return (
-    <div id="modal" className="modal" style={modalStyles} onClick={(e) => handleOffModalClick(e)}>
+    <div id="modal" className="modal" style={modalStyles}>
       <div className="modal-content">
         <div id="modal-body" className="modal-body">
           {props.children}

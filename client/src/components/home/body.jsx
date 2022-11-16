@@ -7,8 +7,10 @@ import Dashboard from '../dashboard/dashboard.jsx';
 
 const bodyStyles = {
   display: 'flex',
+  flexDirection: 'column',
   width: '100%',
-  height: '100vw',
+  height: '80vh',
+  alignItems: 'center'
 };
 
 const Body = (props) => {

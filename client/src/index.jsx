@@ -6,6 +6,7 @@ import Hero from './components/home/hero.jsx';
 import Listing from './components/listings/listings.jsx';
 import Clubs from './components/clubs/clubs.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
+import About from './components/home/about.jsx';
 import Footer from './components/footer/footer.jsx';
 import './index.css';
 
@@ -13,23 +14,33 @@ const AppStyles = {
   display: 'flex',
   flexDirection: 'column',
   width: '100vw',
-  height: '100vh',
-  justifyContent: 'space-evenly',
-  alignItems: 'center'
+  height: 'auto',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  flexWrap: 'wrap'
 };
 
 const App = () => {
-  const [views, setViews] = useState({hero: <Hero />, listings: <Listing />, dashboard: <Dashboard />, clubs: <Clubs />});
-  const [selected, setSelected] = useState(0);
 
+  const [selected, setSelected] = useState('home');
+  const handleViewSelect = (option) => {
+    setSelected(option);
+  };
+
+  const [searchInput, setSearchInput] = useState('');
+  const onHandleSearch = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const [views, setViews] = useState({ home: <Hero viewSelect={handleViewSelect} />, sessions: <Listing Input={searchInput} onSearch={onHandleSearch} />, dashboard: <Dashboard />, clubs: <Clubs Input={searchInput} onSearch={onHandleSearch} />, about: <About /> });
   return (
     <div style={AppStyles} className="bg">
-      <Header />
-      <Body view={views['hero']} />
-      <Footer />
+      <Header viewSelect={handleViewSelect} />
+      <Body view={views[selected]} />
     </div>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+// {/* <Footer /> */}
