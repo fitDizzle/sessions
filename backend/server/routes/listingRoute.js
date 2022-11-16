@@ -1,6 +1,7 @@
-// const router = require("express").Router();
-// const productController = require("../controllers/listingController.js");
+const router = require("express").Router();
+const listingsController = require("../controllers/listingsController.js");
 
-// router.route("/listings/:listing_id/").get(listingController.getListingById);
+router.route("/listings").post(listingsController.createNewListing);
+router.route("/listings").get(listingsController.getAllListings);
 
-// module.exports = router;
+module.exports = router;

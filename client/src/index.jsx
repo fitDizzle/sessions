@@ -21,18 +21,13 @@ const AppStyles = {
 };
 
 const App = () => {
-
+  console.log('rerendered')
   const [selected, setSelected] = useState('home');
   const handleViewSelect = (option) => {
     setSelected(option);
   };
 
-  const [searchInput, setSearchInput] = useState('');
-  const onHandleSearch = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const [views, setViews] = useState({ home: <Hero viewSelect={handleViewSelect} />, sessions: <Listing Input={searchInput} onSearch={onHandleSearch} />, dashboard: <Dashboard />, clubs: <Clubs Input={searchInput} onSearch={onHandleSearch} />, about: <About /> });
+  const [views, setViews] = useState({ home: <Hero viewSelect={handleViewSelect} />, sessions: <Listing />, dashboard: <Dashboard />, clubs: <Clubs />, about: <About /> });
   return (
     <div style={AppStyles} className="bg">
       <Header viewSelect={handleViewSelect} />

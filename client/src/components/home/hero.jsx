@@ -12,7 +12,8 @@ const HeroStyles = {
   alignItems: 'flex-end',
   display: 'flex',
   flexDirection: 'column',
-  color: 'rgba(0, 0, 0, 0.714)'
+  color: 'rgba(0, 0, 0, 0.714)',
+  boxShadow: '0 0 50px 50px white inset'
 };
 
 const overlay = {
@@ -26,7 +27,7 @@ const rel = {
   position: 'relative',
   paddingRight: '100px',
   paddingTop: '100px',
-  fontSize: '3.5em'
+  fontSize: '4em'
 };
 
 
@@ -34,7 +35,7 @@ const Hero = (props) => {
   return (
     <div style={HeroStyles}>
       <div style={overlay}></div>
-      <h1 style={rel}>No More Wo's</h1>
+      <h1 style={rel}>No more wo's.</h1>
       <h2 style={rel}>Sessions has your back.</h2>
       <button className="btn-primary" onClick={() => props.viewSelect('sessions')}>Find Sessions</button>
       <div style={{ width: '100%', height: '100%', fontSize: '1.6em', marginTop: '325px', justifySelf: 'flex-end', alignSelf: 'flex-end', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>

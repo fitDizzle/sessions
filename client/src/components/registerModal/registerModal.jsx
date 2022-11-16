@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../modal/modal.jsx';
+import UserAPI from '../../api/userAPI.js';
 
 const RegisterModal = () => {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ const RegisterModal = () => {
   };
 
   const onSignUp = () => {
-    API.createAnswer(props.questionId, formData).then((res) => {
+    return UserAPI.createUser(formData).then((res) => {
       setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
@@ -23,17 +24,9 @@ const RegisterModal = () => {
     }
   };
 
-  const ModalBtnStyles = {
-    background: 'transparent',
-    border: 'none',
-    fontSize: '1.4em',
-    color: 'rgb(230, 177, 126)'
-  }
-
-
   return (
     <div>
-      <button style={ModalBtnStyles} onClick={() => setShow(true)}>Sign up</button>
+      <button onClick={() => setShow(true)}>Sign up</button>
       <Modal show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container" onClick={(e) => handleOffModalClick(e)}>
           <h1 data-testid="modal-heading">Sign up</h1>

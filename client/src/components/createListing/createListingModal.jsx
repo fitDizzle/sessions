@@ -10,7 +10,7 @@ const CreateListingModal = () => {
     console.log(formData)
   };
 
-  const onSignUp = () => {
+  const onCreateListing = () => {
     API.createAnswer(props.questionId, formData).then((res) => {
       setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
@@ -24,64 +24,42 @@ const CreateListingModal = () => {
     }
   };
 
-  const ModalBtnStyles = {
-    background: 'transparent',
-    border: 'none',
-    fontSize: '1.2em',
-    color: 'rgb(230, 177, 126)'
-  }
-
   return (
     <div>
-      <button style={ModalBtnStyles} onClick={() => setShow(true)}>Create Listing</button>
+      <button onClick={() => setShow(true)}>Create Listing</button>
       <Modal show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container" onClick={(e) => handleOffModalClick(e)}>
           <h1 data-testid="modal-heading">Create Listing</h1>
 
           <div className="input-container">
-            <label>First name</label>
-            <input type="text" name="firstName" placeholder="enter your first name" onChange={(e) => onInputChange(e)} />
+            <label>What is the name of the gym?</label>
+            <input type="text" name="firstName" placeholder="enter the name of the gym where the sessions were purchased" onChange={(e) => onInputChange(e)} />
           </div>
 
           <div className="input-container">
-            <label>Last name</label>
-            <input type="text" name="lastName" placeholder="enter your last name" onChange={(e) => onInputChange(e)} />
-          </div>
+            <label>Please enter the address of the gyms location.</label>
+            <input type="address" name="address" placeholder="enter the gyms location" onChange={(e) => onInputChange(e)} />
 
-          <div className="input-container">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="enter your email" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
-            <label>City</label>
-            <input type="text" name="city" placeholder="enter your city" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
             <label>State</label>
             <input type="text" name="state" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
-          </div>
 
-          <div className="input-container">
             <label>Zip code</label>
             <input type="text" name="zipCode" placeholder="enter your zipcode" onChange={(e) => onInputChange(e)} />
           </div>
 
           <div className="input-container">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="enter your password" onChange={(e) => onInputChange(e)} />
+            <label>Number of sessions</label>
+            <input type="text" name="sessions" placeholder="enter the number of sessions you are listing" onChange={(e) => onInputChange(e)} />
           </div>
 
           <div className="input-container">
-            <label>Retype Password</label>
-            <input type="password" name="passwordCheck" placeholder="enter your password again" onChange={(e) => onInputChange(e)} />
+            <label>Rate per session</label>
+            <input type="cost" name="cost" placeholder="enter what price you'd like to list the sessions for (per session)." onChange={(e) => onInputChange(e)} />
           </div>
-
 
           <div className="modal-footer">
             <button onClick={() => setShow(false)}>cancel</button>
-            <button style={{ marginLeft: '16px' }} onClick={() => onSignUp()}>submit</button>
+            <button style={{ marginLeft: '16px' }} onClick={() => onCreateListing()}>submit</button>
           </div>
 
         </div>

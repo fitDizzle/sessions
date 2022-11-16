@@ -11,7 +11,7 @@ const headerStyles = {
   width: '100%',
   padding: '2em 0px 2em 0px',
   backgroundColor: 'rgb(255, 255, 255)',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 };
 
 const headerImageStyles = {

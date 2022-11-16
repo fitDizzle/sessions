@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import userAPI from '../../api/userAPI.js';
 import Modal from '../modal/modal.jsx';
 
 const LoginModal = () => {
@@ -9,8 +10,8 @@ const LoginModal = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSignUp = () => {
-    API.createAnswer(props.questionId, formData).then((res) => {
+  const onLogin = () => {
+    return userAPI.getUser(formData).then((res) => {
       setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
@@ -23,30 +24,12 @@ const LoginModal = () => {
     }
   };
 
-
-  const ModalBtnStyles = {
-    background: 'transparent',
-    border: 'none',
-    fontSize: '1.4em',
-    color: 'rgb(230, 177, 126)'
-  }
-
   return (
     <div>
-      <button style={ModalBtnStyles} onClick={() => setShow(true)}>Login</button>
+      <button onClick={() => setShow(true)}>Login</button>
       <Modal show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container" onClick={(e) => handleOffModalClick(e)}>
-          <h1 data-testid="modal-heading">Sign up</h1>
-
-          <div className="input-container">
-            <label>First name</label>
-            <input type="text" name="firstName" placeholder="enter your first name" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
-            <label>Last name</label>
-            <input type="text" name="lastName" placeholder="enter your last name" onChange={(e) => onInputChange(e)} />
-          </div>
+          <h1 data-testid="modal-heading">Log in</h1>
 
           <div className="input-container">
             <label>Email</label>
@@ -54,34 +37,13 @@ const LoginModal = () => {
           </div>
 
           <div className="input-container">
-            <label>City</label>
-            <input type="text" name="city" placeholder="enter your city" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
-            <label>State</label>
-            <input type="text" name="state" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
-            <label>Zip code</label>
-            <input type="text" name="zipCode" placeholder="enter your zipcode" onChange={(e) => onInputChange(e)} />
-          </div>
-
-          <div className="input-container">
             <label>Password</label>
             <input type="password" name="password" placeholder="enter your password" onChange={(e) => onInputChange(e)} />
           </div>
 
-          <div className="input-container">
-            <label>Retype Password</label>
-            <input type="password" name="passwordCheck" placeholder="enter your password again" onChange={(e) => onInputChange(e)} />
-          </div>
-
-
           <div className="modal-footer">
             <button onClick={() => setShow(false)}>cancel</button>
-            <button style={{ marginLeft: '16px' }} onClick={() => onSignUp()}>submit</button>
+            <button style={{ marginLeft: '16px' }} onClick={() => onLogin()}>submit</button>
           </div>
 
         </div>

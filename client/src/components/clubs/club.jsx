@@ -5,7 +5,7 @@ const Club = (props) => {
 
   const clubStyles = {
     heigth: '4em',
-    width: '100%',
+    width: '80vw',
     padding: '16px',
     fontSize: '16px',
     border: '1px solid grey',
@@ -26,6 +26,7 @@ const Club = (props) => {
       <p>State: {e_state}</p>
       <p>Zip Code: {e_zip_full}</p>
       <p>Website: {web_url}</p>
+      <button>View Listings</button>
     </div>
   );
 };
