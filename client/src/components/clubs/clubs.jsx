@@ -15,7 +15,6 @@ const Clubs = (props) => {
 
   const onHandleSearch = (e) => {
     setSearchData(e.target.value);
-
   };
 
   useEffect(() => {

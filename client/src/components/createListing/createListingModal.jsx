@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../modal/modal.jsx';
+import ListingAPI from '../../api/listingAPI.js';
 
 const CreateListingModal = () => {
   const [show, setShow] = useState(false);
@@ -11,7 +12,7 @@ const CreateListingModal = () => {
   };
 
   const onCreateListing = () => {
-    API.createAnswer(props.questionId, formData).then((res) => {
+    ListingAPI.createListing(formData).then((res) => {
       setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
@@ -33,28 +34,40 @@ const CreateListingModal = () => {
 
           <div className="input-container">
             <label>What is the name of the gym?</label>
-            <input type="text" name="firstName" placeholder="enter the name of the gym where the sessions were purchased" onChange={(e) => onInputChange(e)} />
+            <input type="text" name="clubName" placeholder="enter the name of the gym where the sessions were purchased" onChange={(e) => onInputChange(e)} />
           </div>
 
-          <div className="input-container">
-            <label>Please enter the address of the gyms location.</label>
-            <input type="address" name="address" placeholder="enter the gyms location" onChange={(e) => onInputChange(e)} />
+          <div className="input-container" style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+            <p>Gym Location</p>
+            <div>
+              <label>Address</label>
+              <input type="address" name="clubAddress" placeholder="enter the gyms location" onChange={(e) => onInputChange(e)} />
+            </div>
 
-            <label>State</label>
-            <input type="text" name="state" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
+            <div>
+              <label>City</label>
+              <input type="text" name="clubCity" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
+            </div>
 
-            <label>Zip code</label>
-            <input type="text" name="zipCode" placeholder="enter your zipcode" onChange={(e) => onInputChange(e)} />
+            <div>
+              <label>State</label>
+              <input type="text" name="clubState" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
+            </div>
+
+            <div>
+              <label>Zip code</label>
+              <input type="text" name="clubZipCode" placeholder="enter your zipcode" onChange={(e) => onInputChange(e)} />
+            </div>
           </div>
 
           <div className="input-container">
             <label>Number of sessions</label>
-            <input type="text" name="sessions" placeholder="enter the number of sessions you are listing" onChange={(e) => onInputChange(e)} />
+            <input type="text" name="sessionCount" placeholder="enter the number of sessions you are listing" onChange={(e) => onInputChange(e)} />
           </div>
 
           <div className="input-container">
             <label>Rate per session</label>
-            <input type="cost" name="cost" placeholder="enter what price you'd like to list the sessions for (per session)." onChange={(e) => onInputChange(e)} />
+            <input type="cost" name="sessionPrice" placeholder="enter what price you'd like to list the sessions for (per session)." onChange={(e) => onInputChange(e)} />
           </div>
 
           <div className="modal-footer">
