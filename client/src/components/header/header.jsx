@@ -1,6 +1,5 @@
 import React from 'react';
 import ColorLogo from '../../../public/assets/logos/png/logo-no-background.png';
-
 import NavBar from '../navBar/NavBar.jsx';
 
 const headerStyles = {
@@ -21,10 +20,11 @@ const headerImageStyles = {
 };
 
 const Header = (props) => {
+  console.log(props, 'HEADER')
   return (
     <div style={headerStyles}>
       <img style={headerImageStyles} src={ColorLogo} alt="sessions-logo" />
-      <NavBar viewSelect={props.viewSelect} />
+      <NavBar viewSelect={props.viewSelect} user={props.user._id}/>
     </div>
   )
 };

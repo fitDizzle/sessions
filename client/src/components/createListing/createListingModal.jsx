@@ -25,36 +25,44 @@ const CreateListingModal = () => {
     }
   };
 
+  const constainerStyles = {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  };
+
   return (
     <div>
       <button onClick={() => setShow(true)}>Create Listing</button>
       <Modal show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container" onClick={(e) => handleOffModalClick(e)}>
-          <h1 data-testid="modal-heading">Create Listing</h1>
+          <div class="modal-heading">
+          <h1>Create Listing</h1>
+          </div>
 
           <div className="input-container">
-            <label>What is the name of the gym?</label>
+            <label>Club Name</label>
             <input type="text" name="clubName" placeholder="enter the name of the gym where the sessions were purchased" onChange={(e) => onInputChange(e)} />
           </div>
 
-          <div className="input-container" style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-            <p>Gym Location</p>
-            <div>
-              <label>Address</label>
+          <div className="input-container" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={constainerStyles}>
+              <label>Club Address</label>
               <input type="address" name="clubAddress" placeholder="enter the gyms location" onChange={(e) => onInputChange(e)} />
             </div>
 
-            <div>
-              <label>City</label>
+            <div style={constainerStyles}>
+              <label>Club City</label>
               <input type="text" name="clubCity" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
             </div>
 
-            <div>
-              <label>State</label>
+            <div style={constainerStyles}>
+              <label>Club State</label>
               <input type="text" name="clubState" placeholder="enter your state" onChange={(e) => onInputChange(e)} />
             </div>
 
-            <div>
+            <div style={constainerStyles}>
               <label>Zip code</label>
               <input type="text" name="clubZipCode" placeholder="enter your zipcode" onChange={(e) => onInputChange(e)} />
             </div>
@@ -76,8 +84,8 @@ const CreateListingModal = () => {
           </div>
 
         </div>
-      </Modal>
-    </div>
+      </Modal >
+    </div >
   );
 };
 

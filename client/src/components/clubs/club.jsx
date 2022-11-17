@@ -5,28 +5,57 @@ const Club = (props) => {
 
   const clubStyles = {
     heigth: '4em',
-    width: '80vw',
+    width: '60vw',
     padding: '16px',
     fontSize: '16px',
     border: '1px solid grey',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    display: 'flex',
+    flexWrap: 'wrap'
+  };
+
+  const contentContainer = {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    fontSize: '24px',
+    flexWrap: 'wrap'
+  };
+
+  const listingText = {
+    paddingTop: '10px'
   };
 
   return (
     <div style={clubStyles}>
-      {/* <p>{_id}</p> */}
-      <p>Club Name: {biz_name}</p>
-      <p>Club Information: {biz_info}</p>
-      <p>Phone Number: {biz_phone}</p>
-      <p>Extension: {biz_phone_ext}</p>
-      <p>Club Address: {e_address}</p>
-      <p>City: {e_city}</p>
-      <p>Country: {e_country}</p>
-      <p>Postal: {e_postal}</p>
-      <p>State: {e_state}</p>
-      <p>Zip Code: {e_zip_full}</p>
-      <p>Website: {web_url}</p>
-      <button>View Listings</button>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={contentContainer}>
+          <h3>Club Information</h3>
+          <p style={listingText}>Club Name: {biz_name}</p>
+          <p style={listingText}>Description: {biz_info}</p>
+          <p style={listingText}>Phone Number: {biz_phone}</p>
+          <p style={listingText}>Extension: {biz_phone_ext}</p>
+        </div>
+
+        <div style={contentContainer}>
+          <h3>Location</h3>
+          <p style={listingText}>Club Address: {e_address}</p>
+          <p style={listingText}>City: {e_city}</p>
+          <p style={listingText}>Country: {e_country}</p>
+          <p style={listingText}>Postal: {e_postal}</p>
+          <p style={listingText}>State: {e_state}</p>
+          <p style={listingText}>Zip Code: {e_zip_full}</p>
+        </div>
+      </div>
+
+      <div style={contentContainer}>
+        <h3>
+          Website
+        </h3>
+        <a style={listingText} href={web_url}>{web_url}</a>
+      </div>
+      <button className="list-btn" style={{ fontSize: '16px', width: '200px', height: '75px' }}>View Listings</button>
     </div>
   );
 };

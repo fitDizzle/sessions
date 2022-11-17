@@ -11,9 +11,8 @@ const UserAPI = {
   },
 
   getUser: (credentials) => {
-    console.log(credentials);
     return axios.get(uri + `user/`, { headers: credentials }).then((res) => {
-      return res.data.results;
+      return res.data;
     }).catch((err) => console.log(err));
   },
 };

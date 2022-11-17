@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../redux/features/authSlice.js';
 import userAPI from '../../api/userAPI.js';
 import Modal from '../modal/modal.jsx';
 
 const LoginModal = () => {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
 
   const onInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,8 +15,9 @@ const LoginModal = () => {
 
   const onLogin = () => {
     return userAPI.getUser(formData).then((res) => {
+      dispatch(login(res));
       setShow(false);
-    }).catch((err) => console.log('Error submitting answer in container component'));
+    }).catch((err) => console.log('Error logging in'));
   };
 
   const handleOffModalClick = (e) => {

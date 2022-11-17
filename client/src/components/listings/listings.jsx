@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListingAPI from '../../api/listingAPI.js';
 import Listing from './listing.jsx';
+import Card from '../cards/card.jsx';
 
 const searchInputStyle = {
   width: '81.25vw',
@@ -29,9 +30,9 @@ const Listings = (props) => {
 
   return (
     <div>
-      <input style={searchInputStyle} type="search" placeholder="find a session by club  or location..." onChange={(e) => onHandleSearch(e)} value={searchData} />
+      <input style={searchInputStyle} type="search" placeholder="Find sessions by club or location..." onChange={(e) => onHandleSearch(e)} value={searchData} />
       <div>{allListings.filter((c) => c.clubName.toLowerCase().includes(searchData.toLowerCase()) || c.clubAddress.toLowerCase().includes(searchData.toLowerCase()) || c.clubCity.toLowerCase().includes(searchData.toLowerCase())).map((listing) => {
-        return (<Listing listing={listing} key={listing._id} />)
+        return (<Card listing={listing} key={listing._id} />)
       })}</div>
     </div>
   );

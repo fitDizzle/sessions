@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import RegisterModal from '../registerModal/RegisterModal.jsx';
 import LoginModal from '../loginModal/LoginModal.jsx';
 import CreateListingModal from '../createListing/createListingModal.jsx';
+import Logout from './LogoutButton.jsx';
 
 const NavStyles = {
   display: 'flex',
@@ -12,18 +14,20 @@ const NavStyles = {
 };
 
 const NavBar = (props) => {
+  const user = useSelector((state) => state.user.value);
+  console.log(user)
   return (
     <ul style={NavStyles}>
-      <li className="btn-nav" >
+      <li className="btn-nav">
         <div>
           <button onClick={(e) => props.viewSelect('home')}>Home</button>
         </div>
       </li>
-      <li className="btn-nav" >
+      {/* <li className="btn-nav" >
         <div>
           <button onClick={(e) => props.viewSelect('about')}>About</button>
         </div>
-      </li>
+      </li> */}
       <li className="btn-nav">
         <div>
           <button onClick={(e) => props.viewSelect('clubs')}>Find A Club</button>
@@ -34,9 +38,9 @@ const NavBar = (props) => {
           <button onClick={(e) => props.viewSelect('sessions')}>Find Sessions</button>
         </div>
       </li>
-      <li className="btn-nav" ><CreateListingModal /></li>
+      {user._id !== undefined ? <li className="btn-nav" ><CreateListingModal /></li> : null}
       <li className="btn-nav"><RegisterModal /></li>
-      <li className="btn-nav"><LoginModal /></li>
+      {user._id !== undefined ? <Logout /> : <li className="btn-nav"><LoginModal /></li>}
     </ul >
   )
 };
